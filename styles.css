@@ -271,6 +271,67 @@ body {
   font-size: 0.9375rem;
 }
 
+/* Trusted by */
+.trusted-by {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.trusted-eyebrow {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+}
+
+.logo-cell {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: 16px 12px;
+  transition: border-color var(--transition);
+}
+
+.logo-cell:hover {
+  border-color: var(--border-hover);
+}
+
+.logo-cell span {
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.logo-samsung { font-weight: 800; letter-spacing: 0.08em; font-size: 0.75rem; }
+.logo-openai { font-weight: 500; font-size: 0.9375rem; }
+.logo-nvidia { font-weight: 700; letter-spacing: 0.06em; font-size: 0.75rem; }
+.logo-datadog { font-weight: 700; letter-spacing: 0.04em; font-size: 0.6875rem; }
+.logo-adobe { font-weight: 600; font-size: 0.9375rem; }
+.logo-stripe { font-weight: 500; font-size: 1rem; letter-spacing: -0.02em; }
+.logo-pwc { font-weight: 700; font-size: 1.125rem; letter-spacing: -0.04em; text-transform: lowercase; }
+.logo-figma { font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.02em; }
+.logo-carlyle { font-weight: 600; letter-spacing: 0.1em; font-size: 0.6875rem; }
+.logo-sanofi { font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; }
+.logo-deloitte { font-weight: 700; font-size: 0.875rem; }
+.logo-ba { font-weight: 600; letter-spacing: 0.04em; font-size: 0.5625rem; line-height: 1.3; }
+.logo-hilton { font-weight: 500; font-size: 0.875rem; font-style: italic; }
+.logo-fox { font-weight: 900; letter-spacing: 0.12em; font-size: 0.875rem; }
+.logo-bp { font-weight: 700; font-size: 1.125rem; letter-spacing: -0.02em; }
+.logo-budweiser { font-weight: 600; font-size: 0.6875rem; letter-spacing: 0.02em; }
+
 /* Stats bar */
 .stats-bar {
   padding: 48px 0;
@@ -402,6 +463,162 @@ body {
   color: var(--gradient-end);
 }
 
+/* Case study */
+.case-study {
+  padding: 96px 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.case-study-header {
+  max-width: 800px;
+  margin-bottom: 48px;
+}
+
+.case-study-eyebrow {
+  color: var(--accent-light);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.case-study-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.case-study-lead {
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.case-study-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.case-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.case-stat-value {
+  display: block;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.case-stat-label {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.case-study-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.case-study-quote-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+
+.case-quote {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.case-quote-sm {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.case-cite {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-style: normal;
+}
+
+.case-cite strong {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.case-cite span {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+.case-details-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.case-details-list {
+  list-style: none;
+  margin-bottom: 28px;
+}
+
+.case-details-list li {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.case-details-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.case-details-list strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.case-study-quote-inline {
+  margin-bottom: 28px;
+  padding: 24px;
+}
+
 /* CTA band */
 .cta-band {
   background: linear-gradient(135deg, rgba(124, 108, 255, 0.12), rgba(61, 214, 198, 0.08));
@@ -464,8 +681,41 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 32px;
-  min-width: 240px;
+  min-width: 280px;
+  max-width: 360px;
   text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+}
+
+.team-card-link:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.team-bio {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 12px 0 16px;
+  text-align: left;
+}
+
+.team-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-light);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.team-linkedin svg {
+  width: 16px;
+  height: 16px;
 }
 
 .team-avatar {
@@ -559,6 +809,20 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 1100px) {
+  .logo-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .case-study-content {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .features-grid {
     grid-template-columns: 1fr;
@@ -576,6 +840,19 @@ body {
 @media (max-width: 600px) {
   .hero {
     padding: 56px 0 72px;
+  }
+
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .case-study-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .case-stat {
+    padding: 20px 16px;
   }
 
   .stats-grid {
