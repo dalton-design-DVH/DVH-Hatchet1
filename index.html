@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 </head>
 <body>
   <!-- Navigation -->
@@ -26,9 +27,10 @@
         <a href="#platform">Platform</a>
         <a href="#coinbase">Coinbase Results</a>
         <a href="#personas">Key Stakeholders</a>
+        <a href="#outreach">Outreach</a>
         <a href="#team">Your Team</a>
       </div>
-      <a href="https://cursor.com/contact-sales" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Book a Demo</a>
+      <a href="#" class="btn btn-primary btn-sm" data-book-demo>Book a Demo</a>
     </div>
   </nav>
 
@@ -48,11 +50,11 @@
         Coinbase achieved with a <strong>90%+ reduction in time-to-market</strong>.
       </p>
       <div class="hero-ctas">
-        <a href="https://cursor.com/contact-sales" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book a Demo</a>
+        <a href="#" class="btn btn-primary btn-lg" data-book-demo>Book a Demo</a>
         <a href="#pov" class="btn btn-secondary btn-lg">Explore the POV</a>
       </div>
       <p class="hero-footnote">
-        Continuously updated with insights from LinkedIn, engineering blogs, podcasts, and public filings · Last updated July 2026
+        Continuously updated with insights from LinkedIn, engineering blogs, podcasts, and public filings · Last updated <span id="last-updated">July 7, 2026</span>
       </p>
     </div>
   </header>
@@ -256,31 +258,18 @@
         <span class="section-tag">Airbnb Intelligence</span>
         <h2>Why This Matters Now for Airbnb</h2>
       </div>
-      <div class="intel-grid">
+      <p class="intel-feed-status" id="intel-feed-label">Live feed from Google News · 3 queries monitored</p>
+      <div class="intel-grid" id="intel-grid">
+        <!-- Populated dynamically by intelligence.js -->
         <article class="intel-card">
-          <span class="intel-source">CTO Mandate · Jan 2026</span>
-          <h3>Project Y &amp; Continuous Release</h3>
-          <p>Ahmad Al-Dahle (ex-Meta Generative AI) joined as CTO in January 2026, spearheading Project Y — an hourly release cycle to drive booking conversion. He asserts "the era of software engineering as primarily a code-writing discipline is ending," advocating systems thinking over syntax fluency.</p>
-        </article>
-        <article class="intel-card">
-          <span class="intel-source">DevEx · Anna Sulkina</span>
-          <h3>10% YoY Developer Satisfaction Gain</h3>
-          <p>VP of Developer Productivity restructured the platform org from tool-focused to problem-focused. Two pillars — platform-agnostic shared tooling and platform-specific iOS/Android/Web teams — achieved a 10% year-over-year increase in developer satisfaction via paved paths and AirDev cloud environments.</p>
-        </article>
-        <article class="intel-card">
-          <span class="intel-source">AI Adoption · 70% WAU</span>
-          <h3>Ready for the Next Paradigm</h3>
-          <p>Sulkina drove 70% weekly active Copilot adoption but notes the bottleneck: "Chat is great but we can reach for more." She's actively searching for AI-native tools — not another sidebar — exactly what Cursor delivers.</p>
-        </article>
-        <article class="intel-card">
-          <span class="intel-source">10-K · 2026</span>
-          <h3>Margin Defense &amp; New Lines</h3>
-          <p>Defending 35%+ Adjusted EBITDA while launching boutique hotels, Host Services Marketplace, and navigating municipal compliance in NYC and Barcelona. Speed without sacrificing platform stability is the defining engineering challenge.</p>
+          <span class="intel-source">Loading...</span>
+          <h3>Fetching latest intelligence</h3>
+          <p>Pulling from LinkedIn, engineering blogs, podcasts, and public filings.</p>
         </article>
       </div>
       <div class="intel-sources">
         <p>Sources continuously monitored:</p>
-        <div class="source-links">
+        <div class="source-links" id="intel-source-links">
           <a href="https://linearb.io/blog/airbnb-developer-experience-transformation" target="_blank" rel="noopener">LinearB — Airbnb DevEx</a>
           <a href="https://getdx.com/podcast/developer-experience-notion-airbnb/" target="_blank" rel="noopener">DX Podcast — Anna Sulkina</a>
           <a href="https://open.spotify.com/episode/0SswYNfvQF11Yt5T80eVwb" target="_blank" rel="noopener">Spotify — DevEx Podcast</a>
@@ -312,7 +301,10 @@
             <li>Replace Airbnb-Aware Chat maintenance with .cursorrules</li>
             <li>Measurable lift on focus time &amp; developer satisfaction KPIs</li>
           </ul>
-          <a href="https://www.linkedin.com/in/annasulkina/" class="persona-link" target="_blank" rel="noopener">LinkedIn →</a>
+          <div class="persona-contact">
+            <a href="https://www.linkedin.com/in/annasulkina/" class="persona-link" target="_blank" rel="noopener">LinkedIn →</a>
+            <a href="mailto:anna.sulkina@airbnb.com" class="persona-link">Email →</a>
+          </div>
         </article>
         <article class="persona-card">
           <div class="persona-header">
@@ -408,13 +400,57 @@
     </div>
   </section>
 
+  <!-- Outreach Playbook (Internal) -->
+  <section id="outreach" class="section outreach-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Outreach Playbook</span>
+        <h2>Getting In — Anna Sulkina</h2>
+        <p>Primary target · VP of Developer Productivity · Reports to CTO Ahmad Al-Dahle</p>
+      </div>
+      <div class="outreach-grid">
+        <article class="outreach-card">
+          <h3>Why Anna First</h3>
+          <ul>
+            <li>1,800+ LinkedIn followers — active and influential internally</li>
+            <li>Owns DevEx KPIs: focus time, goal clarity, developer satisfaction</li>
+            <li>Common connection: Thomas Rampley (Airbnb) via Vapor IO</li>
+            <li>Publicly seeking AI-native tools — not another chat sidebar</li>
+          </ul>
+        </article>
+        <article class="outreach-card">
+          <h3>Talk Track Hooks</h3>
+          <ul>
+            <li>"Chat is great but we can reach for more" — DX Podcast quote</li>
+            <li>Replace Airbnb-Aware Chat maintenance tax with .cursorrules</li>
+            <li>AirDev + Cursor remote SSH = zero-latency inner loop</li>
+            <li>Coinbase: 7 hrs/week saved, 10% DevEx satisfaction lift potential</li>
+          </ul>
+        </article>
+        <article class="outreach-card outreach-card-highlight">
+          <h3>Ecosystem Entry Points</h3>
+          <ul>
+            <li><strong>AWS</strong> — Airbnb is a major AWS shop</li>
+            <li><strong>Harness, Wiz</strong> — ecosystem partner warm intros</li>
+            <li><strong>Ex-Sumo contacts:</strong> <a href="https://www.linkedin.com/in/sebastianmies/" target="_blank" rel="noopener">Sebastian Mies</a>, <a href="https://www.linkedin.com/in/mikegost/" target="_blank" rel="noopener">Mike Gost</a></li>
+          </ul>
+          <div class="outreach-resources">
+            <a href="https://open.spotify.com/episode/0SswYNfvQF11Yt5T80eVwb" target="_blank" rel="noopener">Spotify Podcast</a>
+            <a href="https://linearb.io/blog/airbnb-developer-experience-transformation" target="_blank" rel="noopener">LinearB Article</a>
+            <a href="https://getdx.com/podcast/developer-experience-notion-airbnb/" target="_blank" rel="noopener">DX Podcast</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Banner -->
   <section class="cta-banner">
     <div class="container">
       <h2>Ready to accelerate Project Y?</h2>
       <p>Match Coinbase's agent-first results — 90%+ faster time-to-market, 55% more PRs per engineer, and 7 hours saved weekly.</p>
       <div class="cta-banner-actions">
-        <a href="https://cursor.com/contact-sales" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book a Demo</a>
+        <a href="#" class="btn btn-primary btn-lg" data-book-demo>Book a Demo</a>
         <a href="https://www.linkedin.com/in/daltonvanhatcher/" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Connect on LinkedIn</a>
       </div>
     </div>
@@ -434,7 +470,7 @@
           <p class="team-role">Strategic Account Executive</p>
           <p class="team-bio">Your dedicated partner for bringing agent-first engineering to Airbnb. Former ecosystem relationships with Thomas Rampley (Airbnb) and deep AWS, Harness, and Wiz partner network.</p>
           <div class="team-actions">
-            <a href="https://cursor.com/contact-sales" class="btn btn-primary" target="_blank" rel="noopener">Book a Demo</a>
+            <a href="#" class="btn btn-primary" data-book-demo>Book a Demo</a>
             <a href="https://www.linkedin.com/in/daltonvanhatcher/" class="btn btn-ghost" target="_blank" rel="noopener">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               LinkedIn Profile
@@ -479,7 +515,7 @@
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
-          <a href="https://cursor.com/contact-sales" target="_blank" rel="noopener">Book a Demo</a>
+          <a href="#" data-book-demo>Book a Demo</a>
           <a href="https://www.linkedin.com/in/daltonvanhatcher/" target="_blank" rel="noopener">Dalton Van Hatcher</a>
           <a href="https://www.linkedin.com/in/annasulkina/" target="_blank" rel="noopener">Anna Sulkina</a>
         </div>
@@ -502,6 +538,29 @@
     </div>
   </footer>
 
+  <!-- Booking Modal -->
+  <div id="booking-overlay" class="booking-overlay"></div>
+  <div id="booking-modal" class="booking-modal" role="dialog" aria-labelledby="booking-title" aria-modal="true">
+    <div class="booking-modal-inner">
+      <button id="booking-close" class="booking-close" aria-label="Close booking modal">&times;</button>
+      <div class="booking-header">
+        <h2 id="booking-title">Book a Cursor Demo for Airbnb</h2>
+        <p>Schedule time with Dalton Van Hatcher, Strategic Account Executive</p>
+      </div>
+      <div id="calendly-embed" class="calendly-embed"></div>
+      <div class="booking-fallback">
+        <p>Or connect directly:</p>
+        <div class="booking-fallback-actions">
+          <a href="https://www.linkedin.com/in/daltonvanhatcher/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://cursor.com/contact-sales" class="btn btn-ghost" target="_blank" rel="noopener">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="booking.js"></script>
+  <script src="intelligence.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

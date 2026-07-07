@@ -1,0 +1,138 @@
+{
+  "lastUpdated": "2026-07-07T21:00:13.105Z",
+  "baseline": [
+    {
+      "id": "project-y",
+      "source": "CTO Mandate · Jan 2026",
+      "title": "Project Y & Continuous Release",
+      "summary": "Ahmad Al-Dahle (ex-Meta Generative AI) joined as CTO in January 2026, spearheading Project Y — an hourly release cycle to drive booking conversion. He asserts \"the era of software engineering as primarily a code-writing discipline is ending,\" advocating systems thinking over syntax fluency.",
+      "cursorAngle": "Agent-first Composer aligns directly with Al-Dahle's shift from syntax writing to systems architecture.",
+      "pinned": true
+    },
+    {
+      "id": "devex-sulkina",
+      "source": "DevEx · Anna Sulkina",
+      "title": "10% YoY Developer Satisfaction Gain",
+      "summary": "VP of Developer Productivity restructured the platform org from tool-focused to problem-focused. Two pillars — platform-agnostic shared tooling and platform-specific iOS/Android/Web teams — achieved a 10% year-over-year increase in developer satisfaction via paved paths and AirDev cloud environments.",
+      "cursorAngle": "Cursor's remote SSH + yak integration delivers on \"make common easy and uncommon possible.\"",
+      "pinned": true
+    },
+    {
+      "id": "ai-adoption",
+      "source": "AI Adoption · 70% WAU",
+      "title": "Ready for the Next Paradigm",
+      "summary": "Sulkina drove 70% weekly active Copilot adoption but notes the bottleneck: \"Chat is great but we can reach for more.\" She's actively searching for AI-native tools — not another sidebar — exactly what Cursor delivers.",
+      "cursorAngle": "Replace bolted-on sidebars with an AI-native IDE built for agentic workflows.",
+      "pinned": true
+    },
+    {
+      "id": "margin-defense",
+      "source": "10-K · 2026",
+      "title": "Margin Defense & New Lines",
+      "summary": "Defending 35%+ Adjusted EBITDA while launching boutique hotels, Host Services Marketplace, and navigating municipal compliance in NYC and Barcelona. Speed without sacrificing platform stability is the defining engineering challenge.",
+      "cursorAngle": "Coinbase's 90%+ TTM reduction proves agent-first delivery without sacrificing quality.",
+      "pinned": true
+    }
+  ],
+  "feed": [
+    {
+      "id": "feed-QUkgRW5naW5lZXJp",
+      "source": "Google News · Jun 2026",
+      "title": "AI Engineering Jobs Look More Resilient Than Expected in 2026 - Memeburn",
+      "summary": "AI Engineering Jobs Look More Resilient Than Expected in 2026&nbsp;&nbsp;Memeburn",
+      "cursorAngle": "Aligns with Cursor's agent-first paradigm — shift from line-by-line coding to supervising autonomous execution.",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxONkFMR2ZfNnlpNk1wR2hHR0Q2ai1zVFg4RGZsSzdLdEtFNkduZDNoZWlybnBoaTdkX2NpN0duWmU0WUtwaWVpSTZzUWZWTXZIR2ZiVjYzcFpKMUVvLWtOczZDTDE1bGRnUy02bnlmbzlnR0NUTUM1QUZiWTZfazNwOEhudGJSeE10OW5F?oc=5",
+      "pubDate": "2026-06-29T09:45:03.000Z",
+      "pinned": false
+    },
+    {
+      "id": "feed-QUkgd2FzIHN1cHBv",
+      "source": "Google News · Jun 2026",
+      "title": "AI was supposed to kill engineering jobs — new data suggests they’re more resilient than ever - CryptoRank",
+      "summary": "AI was supposed to kill engineering jobs — new data suggests they’re more resilient than ever&nbsp;&nbsp;CryptoRank",
+      "cursorAngle": "Aligns with Cursor's agent-first paradigm — shift from line-by-line coding to supervising autonomous execution.",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNMVVkU2hzNE5uT0hzTHh2LWl2eWV5c0xlOEF2N2JvdzZQQmFaLUQycDBkSXNlNTB5MGIxS3hFdElLMEp6bFhFSzJxdkJCNkNLV0piVHZCbHRnTVpEWFpSUm1TTlo1RDNSblgtZVZrSXoxMmx2RFZkZ01BOV9FY19lbHFBbk9NVlJhTnZ6X2pwTzluZw?oc=5",
+      "pubDate": "2026-06-25T01:43:22.000Z",
+      "pinned": false
+    },
+    {
+      "id": "feed-V2h5IENoZXNreSBJ",
+      "source": "Google News · Jun 2026",
+      "title": "Why Chesky Is Building His AI Lab Outside Airbnb - Skift",
+      "summary": "Why Chesky Is Building His AI Lab Outside Airbnb&nbsp;&nbsp;Skift",
+      "cursorAngle": "Monitor for alignment with Cursor's enterprise agent-first value proposition.",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPRlc5RVFCOGlZOHVXN19uUkxVN0Q0bUt6d0dLU3ZlY01qRjVsUURDU1BKdTJONm4zMGtsVU9xZ1JlVWRwRjhPREVVaFpobXlKakFFenFPcWtSb2kzMjJrOXpZcGZHN0g5WUpneHdVWlVzcEhlVWhoMHNvXzVOMVUtOWNuaWE?oc=5",
+      "pubDate": "2026-06-17T07:00:00.000Z",
+      "pinned": false
+    },
+    {
+      "id": "feed-S2V5IGZhY3RzOiBB",
+      "source": "Google News · Jun 2026",
+      "title": "Key facts: Airbnb Expands into Hotels; Promotes Ex-Booking Execs - TradingView",
+      "summary": "Key facts: Airbnb Expands into Hotels; Promotes Ex-Booking Execs&nbsp;&nbsp;TradingView",
+      "cursorAngle": "Monitor for alignment with Cursor's enterprise agent-first value proposition.",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPbDk0cDFJd2cyODJUQ1l0UU5YX2RkdXlCU3ZIUnJVVWFiUmZCRDIwelVQVnBuU3lqWENvSk1nVFJLdlNnMlpIdkRseEpQa0ZBbW1YY3dfUk42Z2RhQ0RqRVdBSTM0Yk95aGJSWlNEdlRVZEZoVTlyWDVHdFc4SkFwc0VqekpWcnJtZnhLNEMtSzJFdjFFOEdCN05xOVlZZDhRbk1HajU0SDhvbThUVUxjc2NYMmRQb3o0cXlDWDFQU01YUQ?oc=5",
+      "pubDate": "2026-06-13T07:00:00.000Z",
+      "pinned": false
+    },
+    {
+      "id": "feed-QWlyYm5iIENUTyBX",
+      "source": "Google News · May 2026",
+      "title": "Airbnb CTO Warns AI Hollowing Out Human Expertise - Let's Data Science",
+      "summary": "Airbnb CTO Warns AI Hollowing Out Human Expertise&nbsp;&nbsp;Let's Data Science",
+      "cursorAngle": "Monitor for alignment with Cursor's enterprise agent-first value proposition.",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQWjQtWkgzZzJZWV9hb09XVkpiTXpnS1huUERQalAzV1kwNTJyT2w2cTJQMEI2MHBHSDAtaDdDU0hCSmlidXl1VHgtclZMYkkwQ2lMcGxuWm9SRVE5Vk16SExDMmpDQ3VkemNCeVhQMHZlUGNrbEptdW9zVWlpTVktaTRCRUZJeFkzQ3RRZTVBeUtQU2JrTEE?oc=5",
+      "pubDate": "2026-05-26T07:00:00.000Z",
+      "pinned": false
+    },
+    {
+      "id": "feed-QWlyYm5iIEltcGxl",
+      "source": "Google News · May 2026",
+      "title": "Airbnb Implements Context-Aware Identity Model to Support Privacy-First Social Features - infoq.com",
+      "summary": "Airbnb Implements Context-Aware Identity Model to Support Privacy-First Social Features&nbsp;&nbsp;infoq.com",
+      "cursorAngle": "Monitor for alignment with Cursor's enterprise agent-first value proposition.",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFAwT3FyNXVnb2c0a2tKdkx0N09oQWROemNXWUdYdHJrOHg1VExtVG5NWEVhZk5HbURqWEhFbjBhTDIzTTc5Yi1fazNQSUY3OExrdWlDR09OSnltSE5McVNzT2tzWEw3d29qREhnclhrMmVLaEk?oc=5",
+      "pubDate": "2026-05-13T07:00:00.000Z",
+      "pinned": false
+    },
+    {
+      "id": "feed-QWlyYm5iIFJldmVh",
+      "source": "Google News · May 2026",
+      "title": "Airbnb Reveals AI Agents Now Handle 60% Of New Coding— CEO Brian Chesky Says That Allows One Engineer To Do Work Of 2...",
+      "summary": "Airbnb Reveals AI Agents Now Handle 60% Of New Coding— CEO Brian Chesky Says That Allows One Engineer To Do Work Of 20&nbsp;&nbsp;Yahoo Finance",
+      "cursorAngle": "Aligns with Cursor's agent-first paradigm — shift from line-by-line coding to supervising autonomous execution.",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOdGcxTkFDOGdXVkF3bkV3bVF2X1B6V3B2aWs1S2V3dWRCYzQ2YjYyaExWeklkbWMzMUNybFZFUHRpaXBBNWwxZUN2ZVVTUV91cUxCOC12anY1WHlzRUJPX3BJczlyMXJtWmpaWFZPZHNRMk9HTnpNc3Q3a0ZiN0JWVW1uUEhpeU1rcGYxMGRHN2FRSWVnS3E1c1lsZDY5QQ?oc=5",
+      "pubDate": "2026-05-11T07:00:00.000Z",
+      "pinned": false
+    },
+    {
+      "id": "feed-QUkgQ29kaW5nIEFn",
+      "source": "Google News · May 2026",
+      "title": "AI Coding Agents Are About to Destroy the Cheap Software Business - Times Square Chronicles",
+      "summary": "AI Coding Agents Are About to Destroy the Cheap Software Business&nbsp;&nbsp;Times Square Chronicles",
+      "cursorAngle": "Monitor for alignment with Cursor's enterprise agent-first value proposition.",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOWVk0U1ZWTXpLZHY1dlRoVzZRYUZPVmt0ODM1Z19vdld0aVRWaW1TNW5qY1hYV1NDcXprdk43bUd5XzlTNVFTUkg2ODJjTUgwM3VBdnhEYUk4UUxqVHRsbERVNXYxa3RjU1p0VnZvd2kwNnZjWkN3T3R4TjZUeHN5Y3dtU0hFVnNQVlAyd0ZaWE9yZw?oc=5",
+      "pubDate": "2026-05-11T07:00:00.000Z",
+      "pinned": false
+    }
+  ],
+  "sources": [
+    {
+      "label": "LinearB — Airbnb DevEx",
+      "url": "https://linearb.io/blog/airbnb-developer-experience-transformation"
+    },
+    {
+      "label": "DX Podcast — Anna Sulkina",
+      "url": "https://getdx.com/podcast/developer-experience-notion-airbnb/"
+    },
+    {
+      "label": "Spotify — DevEx Podcast",
+      "url": "https://open.spotify.com/episode/0SswYNfvQF11Yt5T80eVwb"
+    }
+  ],
+  "monitoredQueries": [
+    "Airbnb engineering AI developer",
+    "Airbnb developer productivity",
+    "Airbnb CTO Ahmad Al-Dahle"
+  ]
+}

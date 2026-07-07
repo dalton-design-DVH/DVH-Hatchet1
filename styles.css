@@ -678,6 +678,237 @@ code {
   line-height: 1.7;
 }
 
+.intel-card h3 a {
+  color: inherit;
+  transition: color var(--transition);
+}
+
+.intel-card h3 a:hover {
+  color: var(--airbnb-coral);
+}
+
+.intel-card-feed {
+  border-color: rgba(74, 222, 128, 0.15);
+}
+
+.intel-angle {
+  margin-top: 12px !important;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 13px !important;
+}
+
+.intel-angle strong {
+  color: var(--success);
+}
+
+.intel-feed-status {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: -40px 0 40px;
+}
+
+.persona-contact {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Outreach Section */
+.outreach-section {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border);
+}
+
+.outreach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.outreach-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.outreach-card-highlight {
+  border-color: rgba(255, 90, 95, 0.3);
+  background: linear-gradient(180deg, var(--airbnb-coral-dim), var(--bg-card));
+}
+
+.outreach-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.outreach-card ul li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.outreach-card ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--airbnb-coral);
+}
+
+.outreach-card a {
+  color: var(--airbnb-coral);
+  transition: opacity var(--transition);
+}
+
+.outreach-card a:hover {
+  opacity: 0.8;
+}
+
+.outreach-resources {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.outreach-resources a {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Booking Modal */
+.booking-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.booking-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  z-index: 201;
+  width: 90%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.booking-modal.open,
+.booking-modal.open ~ .booking-overlay,
+.booking-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.booking-modal.open {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.booking-modal-inner {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.booking-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  font-size: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  line-height: 1;
+}
+
+.booking-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+}
+
+.booking-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-right: 32px;
+}
+
+.booking-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.booking-header p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.calendly-embed {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.booking-fallback {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.booking-fallback p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.booking-fallback-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Fix modal open state via JS adding class to overlay too */
+body.modal-open .booking-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.modal-open .booking-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
 .intel-sources {
   text-align: center;
   padding-top: 32px;
@@ -992,7 +1223,8 @@ code {
   }
 
   .pov-grid,
-  .personas-grid {
+  .personas-grid,
+  .outreach-grid {
     grid-template-columns: 1fr;
   }
 
