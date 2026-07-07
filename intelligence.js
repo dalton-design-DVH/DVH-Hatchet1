@@ -5,7 +5,6 @@
 async function loadIntelligence() {
   const grid = document.getElementById('intel-grid');
   const sourcesEl = document.getElementById('intel-source-links');
-  const lastUpdatedEl = document.getElementById('last-updated');
   const feedLabel = document.getElementById('intel-feed-label');
 
   if (!grid) return;
@@ -40,15 +39,6 @@ async function loadIntelligence() {
             `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`
         )
         .join('');
-    }
-
-    if (lastUpdatedEl && data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      lastUpdatedEl.textContent = date.toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-      });
     }
 
     if (feedLabel && data.feed?.length > 0) {
