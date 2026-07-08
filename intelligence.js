@@ -10,7 +10,6 @@ const TYPE_LABELS = {
 
 async function loadIntelligence() {
   const grid = document.getElementById('intel-grid');
-  const sourcesEl = document.getElementById('intel-source-links');
   const feedLabel = document.getElementById('intel-feed-label');
 
   if (!grid) return;
