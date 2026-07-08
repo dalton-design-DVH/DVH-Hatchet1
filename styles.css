@@ -353,8 +353,25 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 32px;
   flex-wrap: wrap;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
+
+.partner-logo:hover {
+  opacity: 1;
+}
+
+.partner-logo-mark {
+  width: 24px;
+  height: 24px;
 }
 
 .partner-name {
@@ -362,10 +379,6 @@ code {
   font-weight: 600;
   color: var(--text-secondary);
   letter-spacing: 0.02em;
-}
-
-.partner-divider {
-  color: var(--text-muted);
 }
 
 /* Sections */
