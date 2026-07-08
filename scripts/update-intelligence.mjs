@@ -1,29 +1,39 @@
 #!/usr/bin/env node
 /**
- * Fetches fresh Airbnb intelligence from public RSS feeds and news sources.
+ * Fetches live blog posts, case studies, and changelog entries from cursor.com.
  * Run manually or via GitHub Actions (daily cron).
  *
  * Usage: node scripts/update-intelligence.mjs
  */
 
-import { readFileSync, writeFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = join(__dirname, '..', 'data', 'intelligence.json');
+const BASE_URL = 'https://cursor.com';
 
-const QUERIES = [
-  'Airbnb engineering AI developer',
-  'Airbnb developer productivity',
-  'Airbnb CTO Ahmad Al-Dahle',
+const CASE_STUDY_SLUGS = [
+  'coinbase',
+  'wayfair',
+  'faire',
+  'dropbox',
+  'paypal',
+  'stripe',
+  'nvidia',
+  'salesforce',
 ];
 
-const CURATED_SOURCES = [
-  { label: 'LinearB — Airbnb DevEx', url: 'https://linearb.io/blog/airbnb-developer-experience-transformation' },
-  { label: 'DX Podcast — Anna Sulkina', url: 'https://getdx.com/podcast/developer-experience-notion-airbnb/' },
-  { label: 'Spotify — DevEx Podcast', url: 'https://open.spotify.com/episode/0SswYNfvQF11Yt5T80eVwb' },
+const PINNED_CASE_STUDIES = ['coinbase', 'wayfair', 'faire'];
+
+const SOURCES = [
+  { label: 'Cursor Blog', url: 'https://cursor.com/blog' },
+  { label: 'Customer Stories', url: 'https://cursor.com/blog/topic/customers' },
+  { label: 'Changelog', url: 'https://cursor.com/changelog' },
 ];
+
+const EXCLUDED_SLUGS = new Set(['topic', 'product', 'research', 'company', 'ideas', 'customers']);
 
 function decodeHtml(text) {
   return text
@@ -31,8 +41,11 @@ function decodeHtml(text) {
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/<[^>]+>/g, '');
+    .replace(/&#x27;/g, "'")
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&apos;/g, "'")
+    .replace(/<[^>]+>/g, '')
+    .trim();
 }
 
 function parseRssItems(xml) {
@@ -47,110 +60,152 @@ function parseRssItems(xml) {
     const pubDate = (block.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || [])[1]?.trim() || '';
     const description = decodeHtml((block.match(/<description>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/) || [])[1] || '');
 
-    if (title && link) {
-      items.push({ title, link, pubDate, description });
-    }
+    if (title && link) items.push({ title, link, pubDate, description });
   }
 
   return items;
 }
 
-function inferCursorAngle(title, description) {
-  const text = `${title} ${description}`.toLowerCase();
-
-  if (text.includes('ai') && (text.includes('code') || text.includes('engineer'))) {
-    return 'Aligns with Cursor\'s agent-first paradigm — shift from line-by-line coding to supervising autonomous execution.';
-  }
-  if (text.includes('developer') && (text.includes('productivity') || text.includes('experience'))) {
-    return 'Directly relevant to Anna Sulkina\'s DevEx KPIs — focus time, goal clarity, and developer satisfaction.';
-  }
-  if (text.includes('release') || text.includes('ship') || text.includes('velocity')) {
-    return 'Supports Project Y\'s hourly release mandate — match Coinbase\'s 90%+ time-to-market reduction.';
-  }
-  if (text.includes('payment') || text.includes('fintech') || text.includes('compliance')) {
-    return 'Cursor\'s ZDR + .cursorrules guardrails enable safe agentic coding in regulated domains.';
-  }
-  return 'Monitor for alignment with Cursor\'s enterprise agent-first value proposition.';
+function formatDateLabel(date) {
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
-async function fetchGoogleNewsRss(query) {
-  const url = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;
+function cleanTitle(title) {
+  return title.replace(/\s*·\s*Cursor\s*$/i, '').trim();
+}
 
+async function fetchText(url) {
+  const res = await fetch(url, {
+    headers: { 'User-Agent': 'Cursor-Landing-Intel-Bot/1.0' },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return res.text();
+}
+
+async function fetchOgMeta(slug) {
+  const url = `${BASE_URL}/blog/${slug}`;
   try {
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'Cursor-Airbnb-Intel-Bot/1.0' },
-    });
+    const html = await fetchText(url);
+    const titleMatch = html.match(/<meta property="og:title" content="([^"]+)"/);
+    const descMatch = html.match(/<meta property="og:description" content="([^"]+)"/);
+    const dateMatch = html.match(/<meta property="article:published_time" content="([^"]+)"/);
 
-    if (!res.ok) return [];
-    const xml = await res.text();
-    return parseRssItems(xml).map((item) => ({
-      ...item,
-      query,
-      source: 'Google News',
-    }));
+    if (!titleMatch) return null;
+
+    return {
+      slug,
+      title: cleanTitle(decodeHtml(titleMatch[1])),
+      summary: decodeHtml(descMatch?.[1] || ''),
+      url,
+      pubDate: dateMatch ? new Date(dateMatch[1]) : new Date(0),
+    };
   } catch (err) {
-    console.warn(`Failed to fetch RSS for "${query}":`, err.message);
-    return [];
+    console.warn(`  Failed to fetch /blog/${slug}:`, err.message);
+    return null;
   }
 }
 
-function dedupeByTitle(items) {
+async function discoverBlogSlugs() {
+  const html = await fetchText(`${BASE_URL}/blog`);
+  const slugs = new Set();
+  const regex = /href="\/blog\/([a-z0-9-]+)"/g;
+  let match;
+
+  while ((match = regex.exec(html)) !== null) {
+    const slug = match[1];
+    if (!EXCLUDED_SLUGS.has(slug)) slugs.add(slug);
+  }
+
+  return [...slugs];
+}
+
+async function fetchChangelogItems() {
+  const xml = await fetchText(`${BASE_URL}/changelog/rss.xml`);
+  return parseRssItems(xml).slice(0, 6).map((item) => {
+    const date = item.pubDate ? new Date(item.pubDate) : new Date();
+    return {
+      id: `changelog-${Buffer.from(item.link).toString('base64url').slice(0, 12)}`,
+      type: 'changelog',
+      source: `Changelog · ${formatDateLabel(date)}`,
+      title: item.title,
+      summary: item.description || 'Latest product update from Cursor.',
+      url: item.link,
+      pubDate: date.toISOString(),
+      pinned: false,
+    };
+  });
+}
+
+async function fetchBlogItems() {
+  const discovered = await discoverBlogSlugs();
+  const slugs = [...new Set([...CASE_STUDY_SLUGS, ...discovered])];
+  console.log(`  Discovered ${discovered.length} blog slugs, fetching metadata for ${slugs.length} posts...`);
+
+  const items = [];
+  const batchSize = 5;
+
+  for (let i = 0; i < slugs.length; i += batchSize) {
+    const batch = slugs.slice(i, i + batchSize);
+    const results = await Promise.all(batch.map(fetchOgMeta));
+    items.push(...results.filter(Boolean));
+  }
+
+  return items.map((item) => {
+    const isCaseStudy = CASE_STUDY_SLUGS.includes(item.slug);
+    const date = item.pubDate.getTime() > 0 ? item.pubDate : new Date();
+
+    return {
+      id: `blog-${item.slug}`,
+      type: isCaseStudy ? 'case-study' : 'blog',
+      source: `${isCaseStudy ? 'Case Study' : 'Blog'} · ${formatDateLabel(date)}`,
+      title: item.title,
+      summary: item.summary || (isCaseStudy ? 'Customer story from cursor.com.' : 'Latest post from the Cursor blog.'),
+      url: item.url,
+      pubDate: date.toISOString(),
+      pinned: PINNED_CASE_STUDIES.includes(item.slug),
+    };
+  });
+}
+
+function dedupeByUrl(items) {
   const seen = new Set();
   return items.filter((item) => {
-    const key = item.title.toLowerCase().slice(0, 80);
-    if (seen.has(key)) return false;
-    seen.add(key);
+    if (seen.has(item.url)) return false;
+    seen.add(item.url);
     return true;
   });
 }
 
-function formatFeedItem(item) {
-  const date = item.pubDate ? new Date(item.pubDate) : new Date();
-  const sourceLabel = item.source || 'News';
-  const formattedDate = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-
-  return {
-    id: `feed-${Buffer.from(item.title).toString('base64url').slice(0, 16)}`,
-    source: `${sourceLabel} · ${formattedDate}`,
-    title: item.title.length > 120 ? item.title.slice(0, 117) + '...' : item.title,
-    summary: item.description?.slice(0, 280) || 'Latest coverage on Airbnb engineering and AI adoption.',
-    cursorAngle: inferCursorAngle(item.title, item.description || ''),
-    url: item.link,
-    pubDate: date.toISOString(),
-    pinned: false,
-  };
-}
-
 async function main() {
-  console.log('Updating Airbnb intelligence feed...');
+  console.log('Updating Cursor blog & case study feed...');
 
-  const existing = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
+  const [blogItems, changelogItems] = await Promise.all([
+    fetchBlogItems(),
+    fetchChangelogItems(),
+  ]);
 
-  const allRssItems = [];
-  for (const query of QUERIES) {
-    const items = await fetchGoogleNewsRss(query);
-    allRssItems.push(...items);
-    console.log(`  "${query}": ${items.length} items`);
-  }
+  console.log(`  Blog & case studies: ${blogItems.length}`);
+  console.log(`  Changelog entries: ${changelogItems.length}`);
 
-  const unique = dedupeByTitle(allRssItems)
-    .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-    .slice(0, 8)
-    .map(formatFeedItem);
+  const pinned = blogItems.filter((i) => i.pinned);
+  const moreCaseStudies = blogItems.filter((i) => i.type === 'case-study' && !i.pinned).slice(0, 3);
+  const blogs = blogItems.filter((i) => i.type === 'blog').slice(0, 4);
+  const changelog = changelogItems.slice(0, 3);
+
+  const items = dedupeByUrl([...pinned, ...moreCaseStudies, ...blogs, ...changelog]).slice(0, 12);
 
   const updated = {
-    ...existing,
     lastUpdated: new Date().toISOString(),
-    feed: unique,
-    sources: CURATED_SOURCES,
-    monitoredQueries: QUERIES,
+    items,
+    sources: SOURCES,
   };
 
   writeFileSync(DATA_PATH, JSON.stringify(updated, null, 2) + '\n');
   console.log(`\nUpdated ${DATA_PATH}`);
-  console.log(`  Baseline cards: ${updated.baseline.length}`);
-  console.log(`  Feed items: ${updated.feed.length}`);
-  console.log(`  Last updated: ${updated.lastUpdated}`);
+  console.log(`  Total items: ${items.length}`);
+  console.log(`  Case studies: ${items.filter((i) => i.type === 'case-study').length}`);
+  console.log(`  Blog posts: ${items.filter((i) => i.type === 'blog').length}`);
+  console.log(`  Changelog: ${items.filter((i) => i.type === 'changelog').length}`);
 }
 
 main().catch((err) => {

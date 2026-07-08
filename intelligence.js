@@ -1,6 +1,12 @@
 /**
- * Loads and renders dynamic Airbnb intelligence cards from data/intelligence.json
+ * Loads and renders Cursor blog posts, case studies, and changelog from data/intelligence.json
  */
+
+const TYPE_LABELS = {
+  'case-study': 'Case Study',
+  blog: 'Blog Post',
+  changelog: 'Product Update',
+};
 
 async function loadIntelligence() {
   const grid = document.getElementById('intel-grid');
@@ -14,19 +20,18 @@ async function loadIntelligence() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    const cards = [
-      ...data.baseline.filter((c) => c.pinned),
-      ...data.feed.filter((c) => !data.baseline.some((b) => b.id === c.id)),
-    ].slice(0, 8);
+    const items = data.items || [];
 
-    grid.innerHTML = cards
+    grid.innerHTML = items
       .map(
-        (card) => `
-        <article class="intel-card${card.url ? ' intel-card-feed' : ''}">
-          <span class="intel-source">${escapeHtml(card.source)}</span>
-          <h3>${card.url ? `<a href="${escapeHtml(card.url)}" target="_blank" rel="noopener">${escapeHtml(card.title)}</a>` : escapeHtml(card.title)}</h3>
-          <p>${escapeHtml(card.summary)}</p>
-          ${card.cursorAngle ? `<p class="intel-angle"><strong>Cursor angle:</strong> ${escapeHtml(card.cursorAngle)}</p>` : ''}
+        (item) => `
+        <article class="intel-card intel-card-${item.type || 'blog'}">
+          <div class="intel-card-meta">
+            <span class="intel-type intel-type-${item.type || 'blog'}">${escapeHtml(TYPE_LABELS[item.type] || 'Blog Post')}</span>
+            <span class="intel-source">${escapeHtml(item.source)}</span>
+          </div>
+          <h3><a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.title)}</a></h3>
+          <p>${escapeHtml(item.summary)}</p>
         </article>
       `
       )
@@ -34,15 +39,22 @@ async function loadIntelligence() {
 
     if (sourcesEl && data.sources) {
       sourcesEl.innerHTML = data.sources
-        .map(
-          (s) =>
-            `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`
-        )
+        .map((s) => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`)
         .join('');
     }
 
-    if (feedLabel && data.feed?.length > 0) {
-      feedLabel.textContent = `${data.feed.length} live feed items · ${data.monitoredQueries?.length || 0} queries monitored`;
+    if (feedLabel && data.lastUpdated) {
+      const counts = {
+        'case-study': items.filter((i) => i.type === 'case-study').length,
+        blog: items.filter((i) => i.type === 'blog').length,
+        changelog: items.filter((i) => i.type === 'changelog').length,
+      };
+      const updated = new Date(data.lastUpdated).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      });
+      feedLabel.textContent = `${counts['case-study']} case studies · ${counts.blog} blog posts · ${counts.changelog} product updates · Updated ${updated}`;
     }
 
     grid.querySelectorAll('.intel-card').forEach((el) => {
@@ -50,7 +62,7 @@ async function loadIntelligence() {
       requestAnimationFrame(() => el.classList.add('visible'));
     });
   } catch (err) {
-    console.warn('Intelligence feed unavailable, using static fallback:', err.message);
+    console.warn('Cursor content feed unavailable:', err.message);
   }
 }
 

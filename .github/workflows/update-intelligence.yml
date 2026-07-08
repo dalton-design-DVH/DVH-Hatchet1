@@ -31,6 +31,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No intelligence updates"
           else
-            git commit -m "chore: update Airbnb intelligence feed [automated]"
+            git commit -m "chore: update Cursor blog and case study feed [automated]"
             git push
           fi
