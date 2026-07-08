@@ -516,6 +516,12 @@ code {
   align-items: center;
 }
 
+.coinbase-layout-visual-only {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 .coinbase-content h2 {
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 700;
