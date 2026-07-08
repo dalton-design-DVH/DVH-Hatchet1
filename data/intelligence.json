@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-08T07:19:29.892Z",
+  "lastUpdated": "2026-07-08T07:35:21.368Z",
   "items": [
     {
       "id": "blog-coinbase",
@@ -8,7 +8,7 @@
       "title": "Coinbase reduces time from idea to production by 90% with Cursor",
       "summary": "Over 2,400 developers at Coinbase use Cursor as a part of an agent-first engineering model. 75% of all PRs are created by agents, with the average engineer merging 55% more PRs since the beginning of the year.",
       "url": "https://cursor.com/blog/coinbase",
-      "pubDate": "2026-07-08T07:19:29.891Z",
+      "pubDate": "2026-07-08T07:35:21.367Z",
       "pinned": true
     },
     {
@@ -18,17 +18,7 @@
       "title": "How Wayfair cut ML model costs by 90% (twice!) with Cursor",
       "summary": "With Cursor handling experiment execution, Wayfair compressed months of ML research into days. Five researchers tested over 110 model variants and cut tag-validation model costs by 94%.",
       "url": "https://cursor.com/blog/wayfair",
-      "pubDate": "2026-07-08T07:19:29.891Z",
-      "pinned": true
-    },
-    {
-      "id": "blog-faire",
-      "type": "case-study",
-      "source": "Case Study · Jul 2026",
-      "title": "Faire doubles PR throughput with Cursor Cloud Agents",
-      "summary": "Faire selected Cursor as its platform for coding agents, replacing an in-house background agent system.",
-      "url": "https://cursor.com/blog/faire",
-      "pubDate": "2026-07-08T07:19:29.891Z",
+      "pubDate": "2026-07-08T07:35:21.367Z",
       "pinned": true
     },
     {
@@ -38,17 +28,7 @@
       "title": "Dropbox uses Cursor to index over 550,000 files and build an AI-native SDLC",
       "summary": "Dropbox accepts more than 1 million lines of agent generated code with Cursor every month, improving PR velocity and cycle time.",
       "url": "https://cursor.com/blog/dropbox",
-      "pubDate": "2026-07-08T07:19:29.891Z",
-      "pinned": false
-    },
-    {
-      "id": "blog-paypal",
-      "type": "case-study",
-      "source": "Case Study · Jul 2026",
-      "title": "Beyond efficiency: PayPal expands what's possible to build with AI",
-      "summary": "PayPal could deliver 40% more capabilities in 2026. High-adoption teams are now deploying daily and completed a 3,000-app Java upgrade 6x faster.",
-      "url": "https://cursor.com/blog/paypal",
-      "pubDate": "2026-07-08T07:19:29.891Z",
+      "pubDate": "2026-07-08T07:35:21.367Z",
       "pinned": false
     },
     {
@@ -58,7 +38,7 @@
       "title": "Build from anywhere with Cursor for iOS",
       "summary": "Cursor is available as a native iOS app on your phone, now in public beta.",
       "url": "https://cursor.com/blog/ios-mobile-app",
-      "pubDate": "2026-07-08T07:19:29.891Z",
+      "pubDate": "2026-07-08T07:35:21.368Z",
       "pinned": false
     },
     {
@@ -68,7 +48,7 @@
       "title": "Reward hacking is swamping model intelligence gains",
       "summary": "On SWE-bench Pro, 63% of successful Opus 4.8 Max resolutions retrieved the fix rather than derived it. Stricter eval harnesses show how benchmark scores can conflate coding ability with answer retrieval.",
       "url": "https://cursor.com/blog/reward-hacking-coding-benchmarks",
-      "pubDate": "2026-07-08T07:19:29.891Z",
+      "pubDate": "2026-07-08T07:35:21.368Z",
       "pinned": false
     },
     {
@@ -78,7 +58,7 @@
       "title": "Direct agents with visual prompts in Design Mode",
       "summary": "Point, draw, or narrate UI changes in the browser while agents edit the code underneath.",
       "url": "https://cursor.com/blog/design-mode",
-      "pubDate": "2026-07-08T07:19:29.891Z",
+      "pubDate": "2026-07-08T07:35:21.368Z",
       "pinned": false
     },
     {
@@ -88,11 +68,31 @@
       "title": "CFOs and the new economics of AI",
       "summary": "AI spend is becoming a major operating expense. Cursor is launching the CFO Council to help finance leaders tie AI investment to measurable value.",
       "url": "https://cursor.com/blog/cfo-council",
-      "pubDate": "2026-07-08T07:19:29.891Z",
+      "pubDate": "2026-07-08T07:35:21.368Z",
       "pinned": false
     },
     {
-      "id": "changelog-aHR0cHM6Ly9j",
+      "id": "blog-notion",
+      "type": "blog",
+      "source": "Blog · Jul 2026",
+      "title": "How Notion used the Cursor SDK to embed coding agents",
+      "summary": "You can now delegate tasks to Cursor directly from Notion. Notion built the integration in weeks using the Cursor SDK.",
+      "url": "https://cursor.com/blog/notion",
+      "pubDate": "2026-07-08T07:35:21.368Z",
+      "pinned": false
+    },
+    {
+      "id": "blog-agent-autonomy-auto-review",
+      "type": "blog",
+      "source": "Blog · Jul 2026",
+      "title": "Governing agent autonomy with Auto-review",
+      "summary": "Auto-review uses a classifier agent to govern local agent autonomy, allowing low-stakes actions to run freely while slowing down when an action crosses a meaningful boundary.",
+      "url": "https://cursor.com/blog/agent-autonomy-auto-review",
+      "pubDate": "2026-07-08T07:35:21.368Z",
+      "pinned": false
+    },
+    {
+      "id": "changelog-aHR0cHM6Ly9jdXJzb3IuY29tL2NoYW5nZWxvZy90ZWFtLW1hcmtldHBsYWNlLXVwZGF0ZXM",
       "type": "changelog",
       "source": "Changelog · Jun 2026",
       "title": "MCPs and Organizations in Team Marketplaces",
@@ -102,7 +102,7 @@
       "pinned": false
     },
     {
-      "id": "changelog-aHR0cHM6Ly9j",
+      "id": "changelog-aHR0cHM6Ly9jdXJzb3IuY29tL2NoYW5nZWxvZy9pb3MtbW9iaWxlLWFwcA",
       "type": "changelog",
       "source": "Changelog · Jun 2026",
       "title": "Cursor Mobile App for iOS",
@@ -112,7 +112,7 @@
       "pinned": false
     },
     {
-      "id": "changelog-aHR0cHM6Ly9j",
+      "id": "changelog-aHR0cHM6Ly9jdXJzb3IuY29tL2NoYW5nZWxvZy9jdXN0b21pemU",
       "type": "changelog",
       "source": "Changelog · Jun 2026",
       "title": "Customize Cursor",
@@ -120,20 +120,6 @@
       "url": "https://cursor.com/changelog/customize",
       "pubDate": "2026-06-22T00:00:00.000Z",
       "pinned": false
-    }
-  ],
-  "sources": [
-    {
-      "label": "Cursor Blog",
-      "url": "https://cursor.com/blog"
-    },
-    {
-      "label": "Customer Stories",
-      "url": "https://cursor.com/blog/topic/customers"
-    },
-    {
-      "label": "Changelog",
-      "url": "https://cursor.com/changelog"
     }
   ]
 }

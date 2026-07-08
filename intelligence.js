@@ -14,8 +14,16 @@ async function loadIntelligence() {
 
   if (!grid) return;
 
+  grid.innerHTML = `
+    <article class="intel-card">
+      <span class="intel-source">Loading...</span>
+      <h3>Fetching latest from Cursor</h3>
+      <p>Pulling blog posts, case studies, and changelog updates.</p>
+    </article>
+  `;
+
   try {
-    const res = await fetch('data/intelligence.json');
+    const res = await fetch(`data/intelligence.json?v=${Date.now()}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
@@ -35,12 +43,6 @@ async function loadIntelligence() {
       `
       )
       .join('');
-
-    if (sourcesEl && data.sources) {
-      sourcesEl.innerHTML = data.sources
-        .map((s) => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`)
-        .join('');
-    }
 
     if (feedLabel && data.lastUpdated) {
       const counts = {

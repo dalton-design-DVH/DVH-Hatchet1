@@ -27,12 +27,6 @@ const CASE_STUDY_SLUGS = [
 
 const PINNED_CASE_STUDIES = ['coinbase', 'wayfair', 'faire'];
 
-const SOURCES = [
-  { label: 'Cursor Blog', url: 'https://cursor.com/blog' },
-  { label: 'Customer Stories', url: 'https://cursor.com/blog/topic/customers' },
-  { label: 'Changelog', url: 'https://cursor.com/changelog' },
-];
-
 const EXCLUDED_SLUGS = new Set(['topic', 'product', 'research', 'company', 'ideas', 'customers']);
 
 function decodeHtml(text) {
@@ -124,7 +118,7 @@ async function fetchChangelogItems() {
   return parseRssItems(xml).slice(0, 6).map((item) => {
     const date = item.pubDate ? new Date(item.pubDate) : new Date();
     return {
-      id: `changelog-${Buffer.from(item.link).toString('base64url').slice(0, 12)}`,
+      id: `changelog-${Buffer.from(item.link).toString('base64url')}`,
       type: 'changelog',
       source: `Changelog · ${formatDateLabel(date)}`,
       title: item.title,
@@ -187,11 +181,14 @@ async function main() {
   console.log(`  Blog & case studies: ${blogItems.length}`);
   console.log(`  Changelog entries: ${changelogItems.length}`);
 
-  const pinned = blogItems.filter((i) => i.pinned).slice(0, 3);
+  const pinned = blogItems.filter((i) => i.pinned).slice(0, 2);
   const moreCaseStudies = blogItems
     .filter((i) => i.type === 'case-study' && !i.pinned)
-    .slice(0, 2);
-  const blogs = blogItems.filter((i) => i.type === 'blog').slice(0, 4);
+    .slice(0, 1);
+  const blogs = blogItems
+    .filter((i) => i.type === 'blog')
+    .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+    .slice(0, 6);
   const changelog = changelogItems.slice(0, 3);
 
   const items = dedupeByUrl([...pinned, ...moreCaseStudies, ...blogs, ...changelog]).slice(0, 12);
@@ -199,7 +196,6 @@ async function main() {
   const updated = {
     lastUpdated: new Date().toISOString(),
     items,
-    sources: SOURCES,
   };
 
   writeFileSync(DATA_PATH, JSON.stringify(updated, null, 2) + '\n');
