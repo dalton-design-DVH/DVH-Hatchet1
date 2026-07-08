@@ -882,36 +882,6 @@ body.modal-open .booking-modal {
 }
 
 
-.intel-sources {
-  text-align: center;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-}
-
-.intel-sources p {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-
-.source-links {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.source-links a {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color var(--transition);
-}
-
-.source-links a:hover {
-  color: var(--text-primary);
-}
-
 /* CTA Banner */
 .cta-banner {
   padding: 80px 0;
