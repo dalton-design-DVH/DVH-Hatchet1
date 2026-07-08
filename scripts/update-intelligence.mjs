@@ -187,8 +187,10 @@ async function main() {
   console.log(`  Blog & case studies: ${blogItems.length}`);
   console.log(`  Changelog entries: ${changelogItems.length}`);
 
-  const pinned = blogItems.filter((i) => i.pinned);
-  const moreCaseStudies = blogItems.filter((i) => i.type === 'case-study' && !i.pinned).slice(0, 3);
+  const pinned = blogItems.filter((i) => i.pinned).slice(0, 3);
+  const moreCaseStudies = blogItems
+    .filter((i) => i.type === 'case-study' && !i.pinned)
+    .slice(0, 2);
   const blogs = blogItems.filter((i) => i.type === 'blog').slice(0, 4);
   const changelog = changelogItems.slice(0, 3);
 
