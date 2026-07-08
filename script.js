@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initScrollAnimations() {
   const sections = document.querySelectorAll(
-    '.pov-card, .platform-card, .intel-card, .metric-card, .team-card, .coinbase-content, .coinbase-visual'
+    '.pov-card, .platform-card, .metric-card, .team-card, .coinbase-content, .coinbase-visual'
   );
 
   sections.forEach((el) => el.classList.add('fade-in'));
