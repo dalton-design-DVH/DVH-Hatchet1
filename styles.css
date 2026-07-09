@@ -167,6 +167,11 @@ code {
   color: var(--text-primary);
 }
 
+.logo-mark {
+  display: block;
+  flex-shrink: 0;
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
@@ -970,8 +975,7 @@ body.modal-open .booking-modal {
     grid-template-columns: 1fr;
   }
 
-  .platform-grid,
-  .intel-grid {
+  .platform-grid {
     grid-template-columns: 1fr;
   }
 
