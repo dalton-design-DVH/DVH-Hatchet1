@@ -1,0 +1,10 @@
+{
+  "name": "cursor-airbnb-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update-intel": "node scripts/update-intelligence.mjs",
+    "serve": "python3 -m http.server 8080"
+  }
+}

@@ -1,0 +1,36 @@
+name: Update Airbnb Intelligence
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Fetch latest intelligence
+        run: node scripts/update-intelligence.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/intelligence.json
+          if git diff --staged --quiet; then
+            echo "No intelligence updates"
+          else
+            git commit -m "chore: update Cursor blog and case study feed [automated]"
+            git push
+          fi
