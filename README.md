@@ -1,6 +1,13 @@
-# Cursor × Airbnb — Strategic Sales Landing Page
+# DVH-Hatchet1 — Strategic Account Landing Pages
 
-A personalized enterprise sales landing page for the Airbnb account, positioning Cursor's agent-first engineering platform.
+Personalized enterprise sales landing pages for strategic Cursor accounts.
+
+## Pages
+
+| Account | Path | Description |
+|---------|------|-------------|
+| **Airbnb** | [`index.html`](index.html) | Agent-first engineering for Project Y — Coinbase proof points, Calendly booking |
+| **Zillow** | [`zillow/index.html`](zillow/index.html) | Strategic account preview — protecting $150M+ technology investment |
 
 ## Live Site
 
@@ -13,17 +20,18 @@ npm run serve
 # or: python3 -m http.server 8080
 ```
 
-Then visit [http://localhost:8080](http://localhost:8080).
+Then visit:
 
-## Features
+- Airbnb: [http://localhost:8080](http://localhost:8080)
+- Zillow: [http://localhost:8080/zillow/](http://localhost:8080/zillow/)
 
-- **Executive POV** — Why Do Anything / Why Cursor / Why Now messaging
+## Airbnb Page — Features
+
+- **Executive POV** — Why Cursor / Why Now messaging
 - **Coinbase Case Study** — 90%+ time-to-market reduction proof points
 - **Platform Capabilities** — Composer, `.cursorrules`, AirDev integration, ZDR security
-- **Live Intelligence Feed** — Auto-updated from Google News RSS (daily cron)
-- **Outreach Playbook** — Anna Sulkina entry strategy with ecosystem warm intros
 - **Calendly Booking Modal** — Inline demo scheduling with LinkedIn fallback
-- **7 Key Stakeholder Personas** — Tailored messaging for engineering leadership
+- **Resource Hub** — Global account team & resources
 
 ## Configuration
 
@@ -55,4 +63,4 @@ Automated: GitHub Actions runs daily at 8:00 UTC via `.github/workflows/update-i
 
 ## Deployment
 
-Pushes to `main` or `cursor/airbnb-landing-page-eb29` trigger automatic GitHub Pages deployment via `.github/workflows/deploy.yml`.
+Pushes to `main` trigger automatic GitHub Pages deployment via `.github/workflows/deploy.yml`.
