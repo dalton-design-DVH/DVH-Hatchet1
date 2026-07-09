@@ -205,36 +205,6 @@ code {
   pointer-events: none;
 }
 
-.hero-top {
-  position: absolute;
-  top: calc(var(--nav-height) + 20px);
-  left: 0;
-  right: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.hero-top-inner {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-airbnb-logo {
-  pointer-events: auto;
-  opacity: 0.9;
-  transition: opacity var(--transition);
-}
-
-.hero-airbnb-logo:hover {
-  opacity: 1;
-}
-
-.hero-airbnb-logo img {
-  display: block;
-  height: 28px;
-  width: auto;
-}
-
 .hero-greeting {
   position: relative;
   font-size: 1.5rem;
@@ -1027,10 +997,6 @@ body.modal-open .booking-modal {
 @media (max-width: 768px) {
   .nav-links {
     display: none;
-  }
-
-  .hero-airbnb-logo img {
-    height: 24px;
   }
 
   .metrics-grid {
